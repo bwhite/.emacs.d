@@ -1,0 +1,7 @@
+Tested on Emacs 23 with X11 support
+
+Install packages
+sudo apt-get install emacs23 emacs-goodies-el pyflakes pep8 
+
+Make a link from the dotemacs file
+ln -s ~/.emacs.d/dotemacs ~/.emacs

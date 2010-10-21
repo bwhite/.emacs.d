@@ -1,0 +1,72 @@
+;; Add local dir
+(add-to-list 'load-path "~/.emacs.d/")
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(inhibit-startup-screen t)
+ '(show-paren-mode t)
+ '(xterm-mouse-mode t))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
+;; Put column number in the bar
+(setq column-number-mode t)
+
+;; Latex
+(set-variable (quote latex-run-command) "pdflatex")
+(defun tex-view ()
+  (interactive)
+  (tex-send-command "evince" (tex-append tex-print-file ".pdf")))
+
+;; Speling
+(defun activate-flyspell () 
+  "Turn on flyspell-mode and call flyspell-buffer." 
+  (interactive) 
+  ;; This next line REALLY slows buffer switching. 
+  (flyspell-mode) 
+  (flyspell-buffer))
+
+(dolist (hook '(latex-mode-hook))
+      (add-hook hook (lambda () (activate-flyspell))))
+
+;; Python
+;;(autoload 'python-mode "python-mode" "Python Mode." t)
+;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;;(require 'ipython)
+
+;; Indent
+(setq-default c-basic-offset 4)
+(require 'color-theme)
+(color-theme-midnight)
+
+;; No Toolbar
+(tool-bar-mode -1)
+
+;; Paren Match Pretty
+(require 'paren)
+(set-face-background 'show-paren-match-face (face-background 'default))
+(set-face-foreground 'show-paren-match-face "#def")
+(set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
+
+;; Python Flymake
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+		       'flymake-create-temp-inplace))
+	   (local-file (file-relative-name
+			temp-file
+			(file-name-directory buffer-file-name))))
+      (list "~/.emacs.d/epylint_brandyn"  (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+	       '("\\.py\\'" flymake-pyflakes-init)))
+(add-hook 'find-file-hook 'flymake-find-file-hook)
