@@ -69,4 +69,5 @@
       (list "~/.emacs.d/epylint_brandyn"  (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("\\.py\\'" flymake-pyflakes-init)))
+(load-library "flymake-cursor")
 (add-hook 'find-file-hook 'flymake-find-file-hook)
