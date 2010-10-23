@@ -10,5 +10,4 @@ Copy pycomplete.py to python path (this works on ubuntu)
 sudo cp ~/.emacs.d/pycomplete.py /usr/local/lib/python2.6/dist-packages/
 
 Font Used
-I use inconsolata 10pt
-sudo apt-get install ttf-inconsolata
+I use Monospace (in ubuntu) 10pt
