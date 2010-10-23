@@ -1,7 +1,10 @@
-Tested on Emacs 23 with X11 support
+Tested on Emacs 23
 
 Install packages
-sudo apt-get install emacs23 emacs-goodies-el pyflakes pep8 
+sudo apt-get install emacs23 emacs-goodies-el pyflakes pep8 pymacs
 
 Make a link from the dotemacs file
 ln -s ~/.emacs.d/dotemacs ~/.emacs
+
+Copy pycomplete.py to python path (this works on ubuntu)
+sudo cp ~/.emacs.d/pycomplete.py /usr/local/lib/python2.6/dist-packages/
