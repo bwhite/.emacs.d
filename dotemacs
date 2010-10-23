@@ -37,12 +37,16 @@
 (dolist (hook '(latex-mode-hook))
       (add-hook hook (lambda () (activate-flyspell))))
 
-;; Python
-;;(autoload 'python-mode "python-mode" "Python Mode." t)
-;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-;;(require 'ipython)
+;; From here http://www.rwdev.eu/articles/emacspyeng
+(require 'pycomplete)
+(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+(autoload 'python-mode "python-mode" "Python editing mode." t)
+(autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(setq interpreter-mode-alist(cons '("python" . python-mode)
+                             interpreter-mode-alist))
 
 ;; Indent
 (setq-default c-basic-offset 4)
@@ -71,3 +75,4 @@
 	       '("\\.py\\'" flymake-pyflakes-init)))
 (load-library "flymake-cursor")
 (add-hook 'find-file-hook 'flymake-find-file-hook)
+(setq flymake-no-changes-timeout 99999999999999)
