@@ -76,3 +76,7 @@
 (load-library "flymake-cursor")
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (setq flymake-no-changes-timeout 99999999999999)
+
+
+;; Git
+(require 'git)
