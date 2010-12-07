@@ -50,8 +50,8 @@
 
 ;; Indent
 (setq-default c-basic-offset 4)
-(require 'color-theme)
-(color-theme-midnight)
+;;(require 'color-theme)
+;;(color-theme-midnight)
 
 ;; No Toolbar
 (tool-bar-mode -1)
@@ -79,4 +79,4 @@
 
 
 ;; Git
-(require 'git)
+;;(require 'git)
