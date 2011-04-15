@@ -68,7 +68,7 @@ def pycomplete(s, fname=None, imports=None, debug=False):
             print msg
         else:
             lisp.message(msg)
-    return result       
+    return result
 
 
 def pyhelp(s, imports=None, debug=False):
@@ -262,7 +262,6 @@ def _test_complete():
     print pycomplete('E', imports=['from email import *'], debug=True)
     print 'Enc ->', pycomplete('Enc', debug=True)
     print 'E ->', pycomplete('E', debug=True)
-
 
 if __name__ == "__main__":
     _test_complete()
