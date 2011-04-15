@@ -81,6 +81,7 @@
 
 ;; Git
 ;;(require 'git)
+(require 'cython-mode)
 
 ;; Coq
 (global-set-key (kbd "C-c C-j") 'proof-goto-point)
