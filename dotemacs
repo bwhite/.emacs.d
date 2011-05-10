@@ -1,5 +1,6 @@
 ;; Add local dir
 (add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1/")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -60,8 +61,41 @@
 ;;(setq interpreter-mode-alist(cons '("python" . python-mode)
 ;;                                  interpreter-mode-alist))
 
+;; Yasnippet
+(add-to-list 'load-path
+             "~/.emacs.d/plugins/yasnippet-0.6.1c")
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
+
+
+;; Ropemacs (from http://stackoverflow.com/questions/2855378/ropemacs-usage-tutorial)
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(require 'python-mode)
+
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+
+;;(require 'auto-complete)
+;;(global-auto-complete-mode t)
+;;(add-hook 'rope-open-project-hook 'ac-nropemacs-setup)
+
+
 ;; Indent
 (setq-default c-basic-offset 4)
+
+;; Default styles
+(setq c-default-style
+      '((other . "k&r")))
+
+
 ;;(require 'color-theme)
 ;;(color-theme-midnight)
 

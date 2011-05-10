@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+# name: unittest
+# expand-env: ((yas/indent-line 'fixed))
+# --
+import unittest
+
+# Cheat Sheet (method/test)
+#
+# assertEqual(a, b)       a == b   
+# assertNotEqual(a, b)    a != b    
+# assertTrue(x)     bool(x) is True  
+# assertFalse(x)    bool(x) is False  
+# assertRaises(exc, fun, *args, **kwds) fun(*args, **kwds) raises exc
+
+class ${Test}(unittest.TestCase):
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_${name}(self):
+        $0
+
+if __name__ == '__main__':
+    unittest.main()
