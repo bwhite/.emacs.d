@@ -39,16 +39,16 @@
   (tex-send-command "evince" (tex-append tex-print-file ".pdf")))
 
 ;; Speling
-(setq flyspell-issue-welcome-flag nil)
-(defun activate-flyspell () 
-  "Turn on flyspell-mode and call flyspell-buffer." 
-  (interactive) 
-  ;; This next line REALLY slows buffer switching. 
-  (flyspell-mode) 
-  (flyspell-buffer))
+;;(setq flyspell-issue-welcome-flag nil)
+;;(defun activate-flyspell () 
+;;  "Turn on flyspell-mode and call flyspell-buffer." 
+;;  (interactive) 
+;;  ;; This next line REALLY slows buffer switching. 
+;;  (flyspell-mode) 
+;;  (flyspell-buffer))
 
-(dolist (hook '(latex-mode-hook))
-      (add-hook hook (lambda () (activate-flyspell))))
+;;(dolist (hook '(latex-mode-hook))
+;;      (add-hook hook (lambda () (activate-flyspell))))
 
 ;; From here http://www.rwdev.eu/articles/emacspyeng
 ;;(require 'pycomplete)
@@ -107,6 +107,7 @@
 (set-face-background 'show-paren-match-face (face-background 'default))
 (set-face-foreground 'show-paren-match-face "#def")
 (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
+
 
 ;; Python Flymake
 (defun flymake-create-temp-intemp (file-name prefix)

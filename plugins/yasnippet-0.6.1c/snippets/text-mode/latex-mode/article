@@ -1,0 +1,24 @@
+#name : Boilerplate article
+# --
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+
+\title{${}}
+%\date{}
+\author{Brandyn White}
+
+\begin{document}
+\maketitle 
+
+\section{${Introduction}}
+$0
+
+
+
+%\bibliographystyle{abbrv}
+%\bibliography{bib}
+\end{document}
