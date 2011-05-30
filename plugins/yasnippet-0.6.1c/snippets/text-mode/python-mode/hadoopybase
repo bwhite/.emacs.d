@@ -34,7 +34,7 @@ class Reducer(object):
         """
 
         Args:
-            $5: $7
+            $5: (see mapper)
             $6s: Iterator of $6s (see mapper)
 
         Yields:
