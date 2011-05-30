@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+# name: hadoopybase
+# expand-env: ((yas/indent-line 'fixed))
+# --
+import hadoopy
+
+
+class Mapper(object):
+
+    def __init__(self):
+        pass
+
+    def map($1, $2):
+        """
+
+        Args:
+            ${1:key}: $3
+            ${2:value}: $4
+
+        Yields:
+            A tuple in the form of ($5, $6)
+            ${5:key}: $7
+            ${6:value}: $8
+        """
+        $0
+
+
+class Reducer(object):
+
+    def __init__(self):
+        pass
+
+    def reduce($5, $6s):
+        """
+
+        Args:
+            $5: $7
+            $6s: Iterator of $6s (see mapper)
+
+        Yields:
+            A tuple in the form of ($9, $10)
+            ${9:key}: $11
+            ${10:value}: $12
+        """
+        for $6 in $6s:
+            pass
+
+
+if __name__ == '__main__':
+    hadoopy.run(Mapper, Reducer)
