@@ -70,18 +70,18 @@
 
 
 ;; Ropemacs (from http://stackoverflow.com/questions/2855378/ropemacs-usage-tutorial)
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(require 'python-mode)
+;;(autoload 'python-mode "python-mode" "Python Mode." t)
+;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;;(require 'python-mode)
 
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+;;(autoload 'pymacs-apply "pymacs")
+;;(autoload 'pymacs-call "pymacs")
+;;(autoload 'pymacs-eval "pymacs" nil t)
+;;(autoload 'pymacs-exec "pymacs" nil t)
+;;(autoload 'pymacs-load "pymacs" nil t)
+;;(pymacs-load "ropemacs" "rope-")
+;;(setq ropemacs-enable-autoimport t)
 
 ;;(require 'auto-complete)
 ;;(global-auto-complete-mode t)
@@ -107,7 +107,6 @@
 (set-face-background 'show-paren-match-face (face-background 'default))
 (set-face-foreground 'show-paren-match-face "#def")
 (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
-
 
 ;; Python Flymake
 (defun flymake-create-temp-intemp (file-name prefix)
@@ -175,8 +174,8 @@ makes)."
 
 ;; iPython
 ;;(require 'ipython)
- (require 'anything-ipython)                                                                                                                                 
+;; (require 'anything-ipython)                                                                                                                                 
 ;;(define-key py-mode-map "\t" 'anything-ipython-complete)                                                                                         
-(define-key py-shell-map "\t" 'anything-ipython-complete)                                                                                        
-(define-key py-mode-map (kbd "C-c M") 'anything-ipython-import-modules-from-buffer)
-(require 'anything-show-completion)
+;;(define-key py-shell-map "\t" 'anything-ipython-complete)                                                                                        
+;;(define-key py-mode-map (kbd "C-c M") 'anything-ipython-import-modules-from-buffer)
+;;(require 'anything-show-completion)
