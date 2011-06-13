@@ -10,7 +10,7 @@ class Mapper(object):
     def __init__(self):
         pass
 
-    def map($1, $2):
+    def map(self, $1, $2):
         """
 
         Args:
@@ -30,7 +30,7 @@ class Reducer(object):
     def __init__(self):
         pass
 
-    def reduce($5, $6s):
+    def reduce(self, $5, $6s):
         """
 
         Args:
