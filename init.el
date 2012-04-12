@@ -1,13 +1,11 @@
 ;; Add local dir
 (add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1/")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(column-number-mode t)
  '(inhibit-startup-screen t)
  '(show-paren-mode t)
  ;;'(xterm-mouse-mode t)
@@ -21,13 +19,20 @@
  '(flymake-warnline ((((class color)) (:background "LightBlue2" :foreground "black")))) 
  )
 
+;;; backup/autosave
+(defvar backup-dir (expand-file-name "~/.emacs.backup/"))
+(defvar autosave-dir (expand-file-name "~/.emacs.autosave/"))
+(setq backup-directory-alist (list (cons ".*" backup-dir)))
+(setq auto-save-list-file-prefix autosave-dir)
+(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+
 ;; Never use tabs
 (setq-default indent-tabs-mode nil)
 
 ;; Show white space
 (require 'show-wspace)
 ;;(add-hook 'python-mode-hook 'highlight-tabs)
-;;(add-hook 'font-lock-mode-hook 'highlight-trailing-whitespace)
+(add-hook 'font-lock-mode-hook 'highlight-trailing-whitespace)
 
 ;; Put column number in the bar
 (setq column-number-mode t)
@@ -39,27 +44,16 @@
   (tex-send-command "evince" (tex-append tex-print-file ".pdf")))
 
 ;; Speling
-;;(setq flyspell-issue-welcome-flag nil)
-;;(defun activate-flyspell () 
-;;  "Turn on flyspell-mode and call flyspell-buffer." 
-;;  (interactive) 
-;;  ;; This next line REALLY slows buffer switching. 
-;;  (flyspell-mode) 
-;;  (flyspell-buffer))
+(setq flyspell-issue-welcome-flag nil)
+(defun activate-flyspell () 
+  "Turn on flyspell-mode and call flyspell-buffer." 
+  (interactive) 
+  ;; This next line REALLY slows buffer switching. 
+  (flyspell-mode) 
+  (flyspell-buffer))
 
-;;(dolist (hook '(latex-mode-hook))
-;;      (add-hook hook (lambda () (activate-flyspell))))
-
-;; From here http://www.rwdev.eu/articles/emacspyeng
-;;(require 'pycomplete)
-;;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-;;(autoload 'python-mode "python-mode" "Python editing mode." t)
-;;(autoload 'pymacs-load "pymacs" nil t)
-;;(autoload 'pymacs-eval "pymacs" nil t)
-;;(autoload 'pymacs-apply "pymacs")
-;;(autoload 'pymacs-call "pymacs")
-;;(setq interpreter-mode-alist(cons '("python" . python-mode)
-;;                                  interpreter-mode-alist))
+(dolist (hook '(latex-mode-hook))
+      (add-hook hook (lambda () (activate-flyspell))))
 
 ;; Yasnippet
 (add-to-list 'load-path
@@ -68,36 +62,12 @@
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
 
-
-;; Ropemacs (from http://stackoverflow.com/questions/2855378/ropemacs-usage-tutorial)
-;;(autoload 'python-mode "python-mode" "Python Mode." t)
-;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-;;(require 'python-mode)
-
-;;(autoload 'pymacs-apply "pymacs")
-;;(autoload 'pymacs-call "pymacs")
-;;(autoload 'pymacs-eval "pymacs" nil t)
-;;(autoload 'pymacs-exec "pymacs" nil t)
-;;(autoload 'pymacs-load "pymacs" nil t)
-;;(pymacs-load "ropemacs" "rope-")
-;;(setq ropemacs-enable-autoimport t)
-
-;;(require 'auto-complete)
-;;(global-auto-complete-mode t)
-;;(add-hook 'rope-open-project-hook 'ac-nropemacs-setup)
-
-
 ;; Indent
 (setq-default c-basic-offset 4)
 
 ;; Default styles
 (setq c-default-style
       '((other . "k&r")))
-
-
-;;(require 'color-theme)
-;;(color-theme-midnight)
 
 ;; No Toolbar
 (tool-bar-mode -1)
@@ -150,10 +120,6 @@ makes)."
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (setq flymake-no-changes-timeout 99999999)
 
-
-;; Git
-;;(require 'git)
-
 ;; Cython
 (require 'cython-mode)
 
@@ -165,17 +131,10 @@ makes)."
 ;;(add-hook 'font-lock-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; Enable Restructued Text Editing
-(require 'rst)
-(add-hook 'text-mode-hook 'rst-text-mode-bindings)
+;;(require 'rst)
+;;(add-hook 'text-mode-hook 'rst-text-mode-bindings)
+(setq font-lock-global-modes '(not rst-mode))
 
 ;; Shell
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (setq comint-prompt-read-only t)
-
-;; iPython
-;;(require 'ipython)
-;; (require 'anything-ipython)                                                                                                                                 
-;;(define-key py-mode-map "\t" 'anything-ipython-complete)                                                                                         
-;;(define-key py-shell-map "\t" 'anything-ipython-complete)                                                                                        
-;;(define-key py-mode-map (kbd "C-c M") 'anything-ipython-import-modules-from-buffer)
-;;(require 'anything-show-completion)
