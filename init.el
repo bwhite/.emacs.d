@@ -32,7 +32,7 @@
 ;; Show white space
 (require 'show-wspace)
 ;;(add-hook 'python-mode-hook 'highlight-tabs)
-(add-hook 'font-lock-mode-hook 'highlight-trailing-whitespace)
+;;(add-hook 'font-lock-mode-hook 'highlight-trailing-whitespace)
 
 ;; Put column number in the bar
 (setq column-number-mode t)
