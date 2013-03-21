@@ -1,3 +1,9 @@
+
+;;(global-font-lock-mode 0)
+(xterm-mouse-mode 1)
+;;(setq transient-mark-mode nil)
+
+
 ;; Add local dir
 (add-to-list 'load-path "~/.emacs.d/")
 
@@ -72,6 +78,7 @@
 ;; No Toolbar
 (tool-bar-mode -1)
 
+
 ;; Paren Match Pretty
 (require 'paren)
 (set-face-background 'show-paren-match-face (face-background 'default))
@@ -138,3 +145,27 @@ makes)."
 ;; Shell
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (setq comint-prompt-read-only t)
+
+;; emacsclient
+;;(defvar server-buffer-clients)
+;;(when (and (fboundp 'server-start) (string-equal (getenv "TERM") 'xterm))
+;;  (server-start)
+;;  (defun fp-kill-server-with-buffer-routine ()
+;;    (and server-buffer-clients (server-done)))
+;;  (add-hook 'kill-buffer-hook 'fp-kill-server-with-buffer-routine))
+;;(server-start)
+(require 'nav)
+;;disable annoying process question
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+    "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+      (flet ((process-list ())) ad-do-it))
+
+;; multi web mode
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags 
+  '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+    (js-mode  "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+    (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
